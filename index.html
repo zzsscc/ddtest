@@ -43,7 +43,7 @@
             jsApiList: ['runtime.info', 'biz.contact.choose',
                     'device.notification.confirm', 'device.notification.alert',
                     'device.notification.prompt', 'biz.ding.post',
-                    'biz.util.openLink', 'biz.cspace.preview'
+                    'biz.util.openLink', 'biz.cspace.preview', 'biz.user.get'
                 ] // 必填，需要使用的jsapi列表，注意：不要带dd。
         });
 
@@ -52,10 +52,28 @@
                 console.log(111)
                 DingTalkPC.biz.user.get({
                     onSuccess: function(info) {
-                        logger.e('userGet success: ' + JSON.stringify(info));
+                        DingTalkPC.device.notification.alert({
+                            message: JSON.stringify(info),
+                            title: "userGet success:", //可传空
+                            buttonName: "ok",
+                            onSuccess: function() {
+                                //onSuccess将在点击button之后回调
+                                /*回调*/
+                            },
+                            onFail: function(err) {}
+                        });
                     },
                     onFail: function(err) {
-                        logger.e('userGet fail: ' + JSON.stringify(err));
+                        DingTalkPC.device.notification.alert({
+                            message: JSON.stringify(err),
+                            title: "userGet fail:", //可传空
+                            buttonName: "ok",
+                            onSuccess: function() {
+                                //onSuccess将在点击button之后回调
+                                /*回调*/
+                            },
+                            onFail: function(err) {}
+                        });
                     }
                 });
                 // DingTalkPC.biz.cspace.preview({
