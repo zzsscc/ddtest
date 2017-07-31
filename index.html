@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script>
+    <!-- <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script> -->
 
-    <!-- <script src="https://g.alicdn.com/dingding/open-develop/1.6.9/dingtalk.js"></script> -->
+    <script src="https://g.alicdn.com/dingding/open-develop/1.6.9/dingtalk.js"></script>
     <!-- <script src="./index.js"></script> -->
 </head>
 
@@ -35,7 +35,21 @@
         });
 
         dd.ready(function() {
-            alert('ready')
+            dd.device.notification.prompt({
+                message: "再说一遍？",
+                title: "提示",
+                buttonLabels: ['继续', '不玩了'],
+                onSuccess: function(result) {
+                    //onSuccess将在点击button之后回调
+                    /*
+                    {
+                        buttonIndex: 0, //被点击按钮的索引值，Number类型，从0开始
+                        value: '' //输入的值
+                    }
+                    */
+                },
+                onFail: function(err) {}
+            });
         })
 
         dd.error(function(error) {
@@ -45,7 +59,17 @@
                 errorCode:"错误码"
                 }
             **/
-            alert('dd error: ' + JSON.stringify(err));
+            // alert('dd error: ' + JSON.stringify(err));
+            dd.device.notification.alert({
+                message: JSON.stringify(err),
+                title: "提示", //可传空
+                buttonName: "收到",
+                onSuccess: function() {
+                    //onSuccess将在点击button之后回调
+                    /*回调*/
+                },
+                onFail: function(err) {}
+            });
         });
     }
 
