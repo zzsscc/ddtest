@@ -15,7 +15,7 @@
 
 <body>
     <p>测试</p>
-    <button id="vv">打开钉盘文件</button>
+    <!-- <button id="vv">打开钉盘文件</button> -->
 </body>
 
 <script>
@@ -48,23 +48,26 @@
         });
 
         DingTalkPC.ready(function() {
-            document.getElementById('vv').onclick = function() {
-                console.log(111)
-                DingTalkPC.biz.cspace.preview({
-                    corpId: "dingb6a804608ad50c0d35c2f4657eb6378f",
-                    fileName: "1分钟钉盘入门.pdf",
-                    fileType: "pdf",
-                    onSuccess: function() {
-                        //无，直接在弹窗页面显示文件详细信息
-                    },
-                    onFail: function(err) {
-                        /*{
-                            errorCode: 1001, //错误码
-                            errorMessage: '', //错误信息
-                        }*/
-                    }
-                });
-            }
+            // document.getElementById('vv').onclick = function() {
+            //     console.log(111)
+            //     DingTalkPC.biz.cspace.preview({
+            //         corpId: "dingb6a804608ad50c0d35c2f4657eb6378f",
+            //         fileName: "1分钟钉盘入门.pdf",
+            //         spaceId: "13557022",
+            //         fileId: "11452819",
+            //         fileSize: 1024,
+            //         fileType: "pdf",
+            //         onSuccess: function() {
+            //             //无，直接在弹窗页面显示文件详细信息
+            //         },
+            //         onFail: function(err) {
+            //             /*{
+            //                 errorCode: 1001, //错误码
+            //                 errorMessage: '', //错误信息
+            //             }*/
+            //         }
+            //     });
+            // }
 
 
             DingTalkPC.device.notification.prompt({
