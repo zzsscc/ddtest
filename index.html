@@ -20,6 +20,18 @@
 <script>
     window.onload = function() {
         console.log(DingTalkPC)
+        DingTalkPC.runtime.permission.requestAuthCode({
+            corpId: "dingb6a804608ad50c0d35c2f4657eb6378f", //企业ID
+            onSuccess: function(result) {
+                /*{
+                    code: 'hYLK98jkf0m' //string authCode
+                }*/
+                console.log(result)
+            },
+            onFail: function(err) {}
+
+        })
+
         DingTalkPC.config({
             agentId: '116242846', // 必填，微应用ID
             corpId: 'dingb6a804608ad50c0d35c2f4657eb6378f', //必填，企业ID
