@@ -19,8 +19,8 @@
 
 <script>
     window.onload = function() {
-        console.log(dd)
-        dd.config({
+        console.log(DingTalkPC)
+        DingTalkPC.config({
             agentId: '116242846', // 必填，微应用ID
             corpId: 'dingb6a804608ad50c0d35c2f4657eb6378f', //必填，企业ID
             timeStamp: '1501486582', // 必填，生成签名的时间戳
@@ -34,8 +34,8 @@
                 ] // 必填，需要使用的jsapi列表，注意：不要带dd。
         });
 
-        dd.ready(function() {
-            dd.device.notification.prompt({
+        DingTalkPC.ready(function() {
+            DingTalkPC.device.notification.prompt({
                 message: "再说一遍？",
                 title: "提示",
                 buttonLabels: ['继续', '不玩了'],
@@ -60,7 +60,7 @@
                 }
             **/
             // alert('dd error: ' + JSON.stringify(err));
-            dd.device.notification.alert({
+            DingTalkPC.device.notification.alert({
                 message: JSON.stringify(err),
                 title: "提示", //可传空
                 buttonName: "收到",
