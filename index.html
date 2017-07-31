@@ -48,9 +48,9 @@
 
         DingTalkPC.ready(function() {
             DingTalkPC.device.notification.prompt({
-                message: "再说一遍？",
+                message: "写点什么？",
                 title: "提示",
-                buttonLabels: ['继续', '不玩了'],
+                buttonLabels: ['继续', '取消'],
                 onSuccess: function(result) {
                     //onSuccess将在点击button之后回调
                     /*
@@ -59,6 +59,16 @@
                         value: '' //输入的值
                     }
                     */
+                    DingTalkPC.device.notification.alert({
+                        message: '你输入了' + result.value,
+                        title: "提示", //可传空
+                        buttonName: "ok",
+                        onSuccess: function() {
+                            //onSuccess将在点击button之后回调
+                            /*回调*/
+                        },
+                        onFail: function(err) {}
+                    });
                 },
                 onFail: function(err) {}
             });
