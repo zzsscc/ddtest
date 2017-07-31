@@ -48,21 +48,24 @@
         });
 
         DingTalkPC.ready(function() {
-            DingTalkPC.biz.cspace.preview({
-                corpId: "dingb6a804608ad50c0d35c2f4657eb6378f",
-                fileName: "1分钟钉盘入门.pdf",
-                fileSize: 1024,
-                fileType: "pdf",
-                onSuccess: function() {
-                    //无，直接在弹窗页面显示文件详细信息
-                },
-                onFail: function(err) {
-                    /*{
-                        errorCode: 1001, //错误码
-                        errorMessage: '', //错误信息
-                    }*/
-                }
-            });
+            document.getElementsByTagName('button').onclick = function() {
+                DingTalkPC.biz.cspace.preview({
+                    corpId: "dingb6a804608ad50c0d35c2f4657eb6378f",
+                    fileName: "1分钟钉盘入门.pdf",
+                    fileSize: 1024,
+                    fileType: "pdf",
+                    onSuccess: function() {
+                        //无，直接在弹窗页面显示文件详细信息
+                    },
+                    onFail: function(err) {
+                        /*{
+                            errorCode: 1001, //错误码
+                            errorMessage: '', //错误信息
+                        }*/
+                    }
+                });
+            }
+
 
             DingTalkPC.device.notification.prompt({
                 message: "写点什么？",
