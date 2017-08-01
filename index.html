@@ -116,10 +116,10 @@
                     max: 10, //人数限制，当multiple为true才生效，可选范围1-1500
                     onSuccess: function(data) {
                         console.log(data)
-                        data.forEach(function(element) {
+                        data.forEach(function(element, i) {
                             console.log(element)
                             let p = document.createElement('p')
-                            p.innerHTML = element.name
+                            p.innerHTML = i + '、' + element.name
                             document.getElementsByTagName('body')[0].appendChild(p)
                         });
                         /* data结构
