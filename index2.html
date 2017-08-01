@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CCC</title>
 
-    <!-- <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script> -->
+    <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script>
 
     <script src="https://g.alicdn.com/dingding/open-develop/1.6.9/dingtalk.js"></script>
     <!-- <script src="./index.js"></script> -->
@@ -20,6 +20,16 @@
 
 <script>
     window.onload = function() {
+        let dt;
+        let type;
+        if (dd.ios || dd.android) {
+            dt = dd
+            type = 1
+        } else {
+            dt = DingTalkPC
+            type = 0
+            console.log(dt.ua)
+        }
         console.log(dt)
         dt.runtime.permission.requestAuthCode({
             corpId: "dingb6a804608ad50c0d35c2f4657eb6378f", //企业ID
