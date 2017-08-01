@@ -20,8 +20,8 @@
 
 <script>
     window.onload = function() {
-        console.log(DingTalkPC)
-        DingTalkPC.runtime.permission.requestAuthCode({
+        console.log(dt)
+        dt.runtime.permission.requestAuthCode({
             corpId: "dingb6a804608ad50c0d35c2f4657eb6378f", //企业ID
             onSuccess: function(result) {
                 /*{
@@ -33,7 +33,7 @@
 
         })
 
-        // DingTalkPC.config({
+        // dt.config({
         //     agentId: '116242846', // 必填，微应用ID
         //     corpId: 'dingb6a804608ad50c0d35c2f4657eb6378f', //必填，企业ID
         //     timeStamp: '1501486582', // 必填，生成签名的时间戳
@@ -44,12 +44,12 @@
         //             'device.notification.confirm', 'device.notification.alert',
         //             'device.notification.prompt', 'biz.ding.post',
         //             'biz.util.openLink', 'biz.cspace.preview', 'biz.user.get', 'biz.navigation.setLeft', 'biz.util.openSlidePanel'
-        //         ] // 必填，需要使用的jsapi列表，注意：不要带DingTalkPC。
+        //         ] // 必填，需要使用的jsapi列表，注意：不要带dt。
         // });
-        // console.log(DingTalkPC)
+        // console.log(dt)
 
-        DingTalkPC.ready(function() {
-            DingTalkPC.biz.navigation.setLeft({
+        dt.ready(function() {
+            dt.biz.navigation.setLeft({
                 show: true, //控制按钮显示， true 显示， false 隐藏， 默认true
                 control: true, //是否控制点击事件，true 控制，false 不控制， 默认false
                 showIcon: true, //是否显示icon，true 显示， false 不显示，默认true； 注：具体UI以客户端为准
@@ -63,15 +63,15 @@
             })
         })
 
-        DingTalkPC.error(function(error) {
+        dt.error(function(error) {
             /**
                 {
                 message:"错误信息",//message信息会展示出钉钉服务端生成签名使用的参数，请和您生成签名的参数作对比，找出错误的参数
                 errorCode:"错误码"
                 }
             **/
-            // alert('DingTalkPC error: ' + JSON.stringify(err));
-            DingTalkPC.device.notification.alert({
+            // alert('dt error: ' + JSON.stringify(err));
+            dt.device.notification.alert({
                 message: JSON.stringify(error),
                 title: "提示", //可传空
                 buttonName: "收到",
@@ -85,7 +85,7 @@
     }
 
 
-    // DingTalkPC.ready(() => {
+    // dt.ready(() => {
     //     console.log(234)
     // })
 </script>

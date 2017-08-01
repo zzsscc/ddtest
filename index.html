@@ -9,7 +9,7 @@
 
     <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script>
 
-    <!-- <script src="https://g.alicdn.com/dingding/open-develop/1.6.9/dingtalk.js"></script> -->
+    <script src="https://g.alicdn.com/dingding/open-develop/1.6.9/dingtalk.js"></script>
     <!-- <script src="./index.js"></script> -->
 </head>
 
@@ -21,9 +21,16 @@
 
 <script>
     window.onload = function() {
-        console.log(DingTalkPC)
-        console.log(DingTalkPC.ua)
-        DingTalkPC.runtime.permission.requestAuthCode({
+        let dt;
+        if (dd.ios || dd.android) {
+            dt = dd
+        } else {
+            dt = dt
+            console.log(dt.ua)
+        }
+        console.log(dt)
+
+        dt.runtime.permission.requestAuthCode({
             corpId: "dingb6a804608ad50c0d35c2f4657eb6378f", //企业ID
             onSuccess: function(result) {
                 /*{
@@ -35,7 +42,7 @@
 
         })
 
-        DingTalkPC.config({
+        dt.config({
             agentId: '116242846', // 必填，微应用ID
             corpId: 'dingb6a804608ad50c0d35c2f4657eb6378f', //必填，企业ID
             timeStamp: '1501486582', // 必填，生成签名的时间戳
@@ -46,16 +53,16 @@
                     'device.notification.confirm', 'device.notification.alert',
                     'device.notification.prompt', 'biz.ding.post',
                     'biz.util.openLink', 'biz.cspace.preview', 'biz.user.get', 'biz.navigation.setLeft', 'biz.util.openSlidePanel', 'device.launcher.launchApp'
-                ] // 必填，需要使用的jsapi列表，注意：不要带DingTalkPC。
+                ] // 必填，需要使用的jsapi列表，注意：不要带dt。
         });
-        console.log(DingTalkPC)
+        console.log(dt)
 
-        DingTalkPC.ready(function() {
+        dt.ready(function() {
             document.getElementById('vv').onclick = function() {
                 console.log(111)
-                DingTalkPC.biz.user.get({
+                dt.biz.user.get({
                     onSuccess: function(info) {
-                        DingTalkPC.device.notification.alert({
+                        dt.device.notification.alert({
                             message: JSON.stringify(info),
                             title: "userGet success:", //可传空
                             buttonName: "ok",
@@ -67,7 +74,7 @@
                         });
                     },
                     onFail: function(err) {
-                        DingTalkPC.device.notification.alert({
+                        dt.device.notification.alert({
                             message: JSON.stringify(err),
                             title: "userGet fail:", //可传空
                             buttonName: "ok",
@@ -82,7 +89,7 @@
             }
 
             document.getElementById('tb').onclick = function() {
-                DingTalkPC.device.launcher.launchApp({
+                dt.device.launcher.launchApp({
                     app: 'taobao', //iOS:应用scheme;Android:应用包名
                     // activity: 'DetailActivity', //仅限Android，打开指定Activity，可不传。如果为空，就打开App的Main入口Activity
                     onSuccess: function(data) {
@@ -97,7 +104,7 @@
             }
 
 
-            // DingTalkPC.biz.util.openSlidePanel({
+            // dt.biz.util.openSlidePanel({
             //     url: 'about:blank', //打开侧边栏的url
             //     title: 'title', //侧边栏顶部标题
             //     onSuccess: function(result) {
@@ -105,7 +112,7 @@
             //             调用biz.navigation.quit接口进入onSuccess, result为调用biz.navigation.quit传入的数值
             //         */
             //设置返回按钮
-            DingTalkPC.biz.navigation.setLeft({
+            dt.biz.navigation.setLeft({
                 show: true, //控制按钮显示， true 显示， false 隐藏， 默认true
                 control: true, //是否控制点击事件，true 控制，false 不控制， 默认false
                 showIcon: true, //是否显示icon，true 显示， false 不显示，默认true； 注：具体UI以客户端为准
@@ -128,7 +135,7 @@
 
 
 
-            DingTalkPC.device.notification.prompt({
+            dt.device.notification.prompt({
                 message: "写点什么？",
                 title: "提示",
                 buttonLabels: ['继续', '取消'],
@@ -140,7 +147,7 @@
                         value: '' //输入的值
                     }
                     */
-                    DingTalkPC.device.notification.alert({
+                    dt.device.notification.alert({
                         message: '你输入了' + result.value,
                         title: "提示", //可传空
                         buttonName: "ok",
@@ -155,15 +162,15 @@
             });
         })
 
-        DingTalkPC.error(function(error) {
+        dt.error(function(error) {
             /**
                 {
                 message:"错误信息",//message信息会展示出钉钉服务端生成签名使用的参数，请和您生成签名的参数作对比，找出错误的参数
                 errorCode:"错误码"
                 }
             **/
-            // alert('DingTalkPC error: ' + JSON.stringify(err));
-            DingTalkPC.device.notification.alert({
+            // alert('dt error: ' + JSON.stringify(err));
+            dt.device.notification.alert({
                 message: JSON.stringify(error),
                 title: "提示", //可传空
                 buttonName: "收到",
@@ -177,7 +184,7 @@
     }
 
 
-    // DingTalkPC.ready(() => {
+    // dt.ready(() => {
     //     console.log(234)
     // })
 </script>
