@@ -33,27 +33,27 @@
 
         })
 
-        dd.config({
-            agentId: '116242846', // 必填，微应用ID
-            corpId: 'dingb6a804608ad50c0d35c2f4657eb6378f', //必填，企业ID
-            timeStamp: '1501486582', // 必填，生成签名的时间戳
-            nonceStr: 'abcdefg', // 必填，生成签名的随机串
-            signature: 'd45677da62db0eb5a6568f10638ecaae04aa413f', // 必填，签名
-            // type: 0, //选填。0表示微应用的jsapi,1表示服务窗的jsapi。不填默认为0。该参数从dingtalk.js的0.8.3版本开始支持
-            jsApiList: ['runtime.info', 'biz.contact.choose',
-                    'device.notification.confirm', 'device.notification.alert',
-                    'device.notification.prompt', 'biz.ding.post',
-                    'biz.util.openLink', 'biz.cspace.preview', 'biz.user.get', 'biz.navigation.setLeft', 'biz.util.openSlidePanel'
-                ] // 必填，需要使用的jsapi列表，注意：不要带dd。
-        });
-        console.log(dd)
+        // dd.config({
+        //     agentId: '116242846', // 必填，微应用ID
+        //     corpId: 'dingb6a804608ad50c0d35c2f4657eb6378f', //必填，企业ID
+        //     timeStamp: '1501486582', // 必填，生成签名的时间戳
+        //     nonceStr: 'abcdefg', // 必填，生成签名的随机串
+        //     signature: 'd45677da62db0eb5a6568f10638ecaae04aa413f', // 必填，签名
+        //     // type: 0, //选填。0表示微应用的jsapi,1表示服务窗的jsapi。不填默认为0。该参数从dingtalk.js的0.8.3版本开始支持
+        //     jsApiList: ['runtime.info', 'biz.contact.choose',
+        //             'device.notification.confirm', 'device.notification.alert',
+        //             'device.notification.prompt', 'biz.ding.post',
+        //             'biz.util.openLink', 'biz.cspace.preview', 'biz.user.get', 'biz.navigation.setLeft', 'biz.util.openSlidePanel'
+        //         ] // 必填，需要使用的jsapi列表，注意：不要带dd。
+        // });
+        // console.log(dd)
 
         dd.ready(function() {
             dd.biz.navigation.setLeft({
                 show: true, //控制按钮显示， true 显示， false 隐藏， 默认true
                 control: true, //是否控制点击事件，true 控制，false 不控制， 默认false
                 showIcon: true, //是否显示icon，true 显示， false 不显示，默认true； 注：具体UI以客户端为准
-                text: '返回吧', //控制显示文本，空字符串表示显示默认文本
+                text: '回去', //控制显示文本，空字符串表示显示默认文本
                 onSuccess: function(result) {
                     //如果control为true，则onSuccess将在发生按钮点击事件被回调
                     console.log('点击了返回按钮');
