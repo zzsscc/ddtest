@@ -61,34 +61,6 @@
                 },
                 onFail: function(err) {}
             })
-
-
-
-            dd.device.notification.prompt({
-                message: "写点什么？",
-                title: "提示",
-                buttonLabels: ['继续', '取消'],
-                onSuccess: function(result) {
-                    //onSuccess将在点击button之后回调
-                    /*
-                    {
-                        buttonIndex: 0, //被点击按钮的索引值，Number类型，从0开始
-                        value: '' //输入的值
-                    }
-                    */
-                    dd.device.notification.alert({
-                        message: '你输入了' + result.value,
-                        title: "提示", //可传空
-                        buttonName: "ok",
-                        onSuccess: function() {
-                            //onSuccess将在点击button之后回调
-                            /*回调*/
-                        },
-                        onFail: function(err) {}
-                    });
-                },
-                onFail: function(err) {}
-            });
         })
 
         dd.error(function(error) {
