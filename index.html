@@ -16,6 +16,7 @@
 <body>
     <p>测试</p>
     <button id="vv">获取用户信息</button>
+    <button id="tb">打开淘宝</button>
 </body>
 
 <script>
@@ -77,24 +78,23 @@
                         });
                     }
                 });
-                // dd.biz.cspace.preview({
-                //     corpId: "dingb6a804608ad50c0d35c2f4657eb6378f",
-                //     fileName: "1分钟钉盘入门.pdf",
-                //     spaceId: "13557022",
-                //     fileId: "11452819",
-                //     fileSize: 1024,
-                //     fileType: "pdf",
-                //     onSuccess: function() {
-                //         //无，直接在弹窗页面显示文件详细信息
-                //     },
-                //     onFail: function(err) {
-                //         /*{
-                //             errorCode: 1001, //错误码
-                //             errorMessage: '', //错误信息
-                //         }*/
-                //     }
-                // });
             }
+
+            document.getElementById('vv').onclick = function() {
+                dd.device.launcher.launchApp({
+                    app: 'taobao', //iOS:应用scheme;Android:应用包名
+                    activity: 'DetailActivity', //仅限Android，打开指定Activity，可不传。如果为空，就打开App的Main入口Activity
+                    onSuccess: function(data) {
+                        /*
+                        {
+                            result: true //true 唤起成功 false 唤起失败
+                        }
+                        */
+                    },
+                    onFail: function(err) {}
+                });
+            }
+
 
             // dd.biz.util.openSlidePanel({
             //     url: 'about:blank', //打开侧边栏的url
