@@ -56,7 +56,8 @@
             jsApiList: ['runtime.info', 'biz.contact.choose',
                     'device.notification.confirm', 'device.notification.alert',
                     'device.notification.prompt', 'biz.ding.post',
-                    'biz.util.openLink', 'biz.cspace.preview', 'biz.user.get', 'biz.navigation.setLeft', 'biz.util.openSlidePanel', 'device.launcher.launchApp'
+                    'biz.util.openLink', 'biz.cspace.preview', 'biz.user.get', 'biz.navigation.setLeft', 'biz.util.openSlidePanel', 'device.launcher.launchApp',
+                    'biz.contact.choose'
                 ] // 必填，需要使用的jsapi列表，注意：不要带dt。
         });
         console.log(dt)
@@ -108,7 +109,7 @@
             }
 
             document.getElementById('xr').onclick = function() {
-                DingTalkPC.biz.contact.choose({
+                dt.biz.contact.choose({
                     multiple: true, //是否多选： true多选 false单选； 默认true
                     // users: ['10001', '10002', ...], //默认选中的用户列表，员工userid；成功回调中应包含该信息
                     corpId: 'dingb6a804608ad50c0d35c2f4657eb6378f', //企业id
