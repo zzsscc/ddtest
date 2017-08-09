@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=htm, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <script src="./jquery-2.1.1.js"></script>
     <script src="https://g.alicdn.com/dingding/dingtalk-pc-api/2.7.0/index.js"></script>
 
     <script src="https://g.alicdn.com/dingding/open-develop/1.6.9/dingtalk.js"></script>
@@ -22,19 +22,20 @@
 
 <script>
     window.onload = function() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('get', 'https://oapi.dingtalk.com/gettoken?corpid=dingb6a804608ad50c0d35c2f4657eb6378f&corpsecret=KNx2mrz3gQZhm7FRCwAXGRQ6qm-0kJpZ05BYswbzCH1x9G3l-WQ5KkDrQYvu64p-', 'true');
-        xhr.onreadystatechange = function() {
-            if (xhr.readtState == 4) {
-                if (xhr.status == 200) {
-                    //操作xhr. responseText
-                    var data = JSON.parse(xhr.responseText); //---得到一个json
-                    console.log(data)
-                } else {
-                    //错误处理(’出错了，ERR：‘+ xhr.status）；
-                }
+        $.ajax({
+            type: 'GET',
+            url: 'https://oapi.dingtalk.com/gettoken',
+            data: {
+                "corpid": "dingb6a804608ad50c0d35c2f4657eb6378f",
+                "corpsecret": "KNx2mrz3gQZhm7FRCwAXGRQ6qm-0kJpZ05BYswbzCH1x9G3l-WQ5KkDrQYvu64p-"
+            },
+            success: function(res) {
+                console.log(res)
+            },
+            error: function(error) {
+                console.log(error);
             }
-        }
+        });
 
 
         let dt;
