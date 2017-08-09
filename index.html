@@ -22,6 +22,21 @@
 
 <script>
     window.onload = function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'https://oapi.dingtalk.com/gettoken?corpid=dingb6a804608ad50c0d35c2f4657eb6378f&corpsecret=KNx2mrz3gQZhm7FRCwAXGRQ6qm-0kJpZ05BYswbzCH1x9G3l-WQ5KkDrQYvu64p-', 'true');
+        xhr.onreadystatechange = function() {
+            if (xhr.readtState == 4) {
+                if (xhr.status == 200) {
+                    //操作xhr. responseText
+                    var data = JSON.parse(xhr.responseText); //---得到一个json
+                    console.log(data)
+                } else {
+                    //错误处理(’出错了，ERR：‘+ xhr.status）；
+                }
+            }
+        }
+
+
         let dt;
         let type;
         if (dd.ios || dd.android) {
@@ -51,7 +66,7 @@
             corpId: 'dingb6a804608ad50c0d35c2f4657eb6378f', //必填，企业ID
             timeStamp: '1501486582', // 必填，生成签名的时间戳
             nonceStr: 'abcdefg', // 必填，生成签名的随机串
-            signature: '09e8243a06a80db925fb051a6f3c27bc95258b2e', // 必填，签名
+            signature: '36f4507c4533dbf004ee6d74a5bf52ff4b7ad434', // 必填，签名
             // type: 0, //选填。0表示微应用的jsapi,1表示服务窗的jsapi。不填默认为0。该参数从dingtalk.js的0.8.3版本开始支持
             jsApiList: ['runtime.info', 'biz.contact.choose',
                     'device.notification.confirm', 'device.notification.alert',
